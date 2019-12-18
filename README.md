@@ -47,9 +47,12 @@ cat main.tf
 ```
 * We use for_each to go through a map
 ```hcl
+
+for_each = {
 resource "aws_instance" "example" {
   instance_type = "t2.micro"
   for_each = {
+
     server1_jordan = "ami-0520e698dd500b1d1"
     server2_jordan = "ami-0d5d9d301c853a04a"
   }
@@ -64,7 +67,7 @@ resource "aws_instance" "example" {
  This creates two resources which have the name and corresponding ami id.
  
  * In the code we have also utilised an output
- ```
+ ```hcl
  output "EC2_instance_information" {
   value = "${formatlist(
     "%s = %s", 
@@ -76,7 +79,7 @@ resource "aws_instance" "example" {
   This output will show the server name equal to the ami used for it
   
   * Sample output is 
-  ```
+  ```hcl
   Outputs:
 
   EC2_instance_information = [
