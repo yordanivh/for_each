@@ -46,8 +46,10 @@ With this repo you will get an overview of how for_each works  and you will be a
 cat main.tf
 ```
 * We use for_each to go through a map
-```
-for_each = {
+```hcl
+resource "aws_instance" "example" {
+  instance_type = "t2.micro"
+  for_each = {
     server1_jordan = "ami-0520e698dd500b1d1"
     server2_jordan = "ami-0d5d9d301c853a04a"
   }
@@ -56,6 +58,7 @@ for_each = {
   tags = {
     name = each.key
   }
+}
  ```
  What this code does is assign to the ami variable each value in the map and assign to a tag name each key in the map.
  This creates two resources which have the name and corresponding ami id.
