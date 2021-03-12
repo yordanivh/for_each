@@ -16,6 +16,7 @@ resource "aws_instance" "example" {
 
 #this coment is added for a test
 #this is another comment
+#another one
 
 output "EC2_instance_information" {
   value = "${formatlist(
